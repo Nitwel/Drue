@@ -1,0 +1,19 @@
+CREATE TABLE words (
+    id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+    word TEXT NOT NULL,
+    translation TEXT NOT NULL,
+    image VARCHAR(255) NOT NULL,
+    audio VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE collections (
+    id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+    name TEXT NOT NULL,
+    description TEXT NOT NULL
+);
+
+CREATE TABLE collection_words (
+    id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+    collection_id INTEGER NOT NULL REFERENCES collections(id),
+    word_id INTEGER NOT NULL REFERENCES words(id)
+);
